@@ -12,3 +12,9 @@ variable "slack_signing_secret" {
   description = "Slack signing secret"
   type        = string
 }
+
+variable "end_point_path" {
+  description = "Path to the endpoint"
+  default = "/slack/events"
+  type        = string
+}

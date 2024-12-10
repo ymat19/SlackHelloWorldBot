@@ -1,3 +1,5 @@
+
+
 # create lambda execution role
 resource "aws_iam_role" "slack_bot" {
   name = "slack-lambda-role"
@@ -94,7 +96,7 @@ resource "aws_apigatewayv2_integration" "slack_bot" {
 
 resource "aws_apigatewayv2_route" "slack_bot" {
   api_id    = aws_apigatewayv2_api.slack_bot.id
-  route_key = "POST /slack/events"
+  route_key = "POST ${var.end_point_path}"
   target    = "integrations/${aws_apigatewayv2_integration.slack_bot.id}"
 }
 
@@ -109,5 +111,5 @@ resource "aws_apigatewayv2_stage" "slack_bot" {
 }
 
 output "slack_bot_url" {
-  value = aws_apigatewayv2_api.slack_bot.api_endpoint
+  value = "${aws_apigatewayv2_api.slack_bot.api_endpoint}${var.end_point_path}"
 }
