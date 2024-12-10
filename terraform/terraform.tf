@@ -1,5 +1,3 @@
-
-
 # create lambda execution role
 resource "aws_iam_role" "slack_bot" {
   name = "slack-lambda-role"
@@ -108,8 +106,4 @@ resource "aws_apigatewayv2_stage" "slack_bot" {
     throttling_rate_limit  = 1
     throttling_burst_limit = 10
   }
-}
-
-output "slack_bot_url" {
-  value = "${aws_apigatewayv2_api.slack_bot.api_endpoint}${var.end_point_path}"
 }
