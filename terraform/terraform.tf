@@ -58,7 +58,7 @@ resource "aws_lambda_function" "slack_bot" {
   function_name    = "slack-bot"
   role             = aws_iam_role.slack_bot.arn
   handler          = "lambda_function.lambda_handler"
-  runtime          = "python3.10"
+  runtime          = "python3.12"
   filename         = data.archive_file.slack_bot.output_path
   source_code_hash = data.archive_file.slack_bot.output_base64sha256
   timeout          = 15
