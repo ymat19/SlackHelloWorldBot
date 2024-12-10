@@ -2,7 +2,7 @@ from slack_bolt.adapter.aws_lambda import SlackRequestHandler
 from slack_bolt import App
 
 # Boltアプリのインスタンスを作成
-app = App()
+app = App(process_before_response=True)
 
 
 # メンションされたときのイベントハンドラ
